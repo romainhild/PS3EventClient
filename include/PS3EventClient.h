@@ -6,10 +6,12 @@
 
 #include "xbmcclient.h"
 
+// use udev rule to symlink
+#define HANDLER "/dev/ps3controller"
+
 class PS3EventClient : public CXBMCClient
 {
 private:
-    std::ofstream M_out;
     std::string M_handlerName;
     int M_handler;
     std::string M_controllerName;
@@ -17,10 +19,10 @@ private:
     bool M_hasGrabed;
 
 public:
-    PS3EventClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0) : CXBMCClient(IP, Port, Socket, UID)
+    PS3EventClient(const char *IP = "127.0.0.1", int Port = 9777, int Socket = -1, unsigned int UID = 0)
+        : CXBMCClient(IP, Port, Socket, UID)
     {
-	M_out.open( "/home/xbian/ps3.out");
-	M_handlerName = "/dev/input/event3";
+	M_handlerName = HANDLER;
 	M_handler = open( M_handlerName.c_str(), O_RDONLY | O_NONBLOCK );
 	M_hasGrabed = false;
 	char name[128];
@@ -28,7 +30,6 @@ public:
 	    strncpy(name, "Unknown", sizeof(name));
 	M_controllerName = std::string(name);
 	M_keymap = "JS0:" + M_controllerName;
-        M_out << "PS3EventClient send to " << IP <<":" << Port << " using keymap " << M_keymap << std::endl;
     }
     std::string handlerName() const { return M_handlerName; }
     void setHandlerName( std::string s ) { M_handlerName = s; }

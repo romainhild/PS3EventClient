@@ -11,6 +11,9 @@
 
 #include "PS3EventClient.h"
 
+#define PID_FILE "/var/run/ps3event_clientd.pid"
+#define LOG_FILE "/var/log/ps3event_clientd.log"
+
 int main()
 {
     std::ofstream fp;
@@ -26,7 +29,7 @@ int main()
     // PARENT PROCESS. Need to write the child pid and kill itself.
     if (process_id > 0)
     {
-	fp.open("/var/run/ps3event_clientd.pid");
+	fp.open( PID_FILE );
 	fp << process_id << std::endl;
 	fp.close();
     	exit(0);
@@ -47,7 +50,7 @@ int main()
     close(STDERR_FILENO);
 
     // Open a log file in write mode.
-    fp.open ("/home/xbian/daemon-log.txt");
+    fp.open ( LOG_FILE );
 
     PS3EventClient client;
     do
@@ -55,7 +58,7 @@ int main()
 	fp << "tempting to grab " << client.controllerName() << " at " << client.handlerName() << " ... ";
 	client.grabDevice();
 	fp << strerror(errno) << std::endl;
-	std::this_thread::sleep_for(std::chrono::seconds(30));
+	std::this_thread::sleep_for(std::chrono::seconds(10));
     } while ( !client.hasGrabed() );
 
     std::string msg = "PS3EventClient use " + client.keymap();

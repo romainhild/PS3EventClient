@@ -38,7 +38,6 @@ void PS3EventClient::grabDevice()
 	M_hasGrabed = false;
     else
     	M_hasGrabed = true;
-    M_out << "has grabed " << M_hasGrabed << " error : " << strerror(errno) << std::endl;
 }
 
 void PS3EventClient::releaseDevice()
@@ -54,8 +53,6 @@ void PS3EventClient::readEvent()
     int rc = read(M_handler, &e, sizeof(e));
     if ( rc > 0 )
     {
-        if ( e.type == 1 )
-            M_out << "read event of type " << e.type << " for code " << e.code << " and value " << e.value << std::endl;
         switch ( e.type ) {
         case 1:
             switch ( e.value ) {
