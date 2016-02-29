@@ -1,0 +1,2 @@
+DEVPATH=="*event*", ATTRS{name}=="PLAYSTATION(R)3 Controller", ACTION=="add", SYMLINK+="ps3controller", RUN+="/home/xbian/opt/ps3controller_for_kodi/resources/udevscript.sh start"
+DEVPATH=="*event*", ATTRS{name}=="PLAYSTATION(R)3 Controller", ACTION=="remove", RUN+="/home/xbian/opt/ps3controller_for_kodi/resources/udevscript.sh stop"
