@@ -26,10 +26,9 @@ int main()
     // PARENT PROCESS. Need to write the child pid and kill itself.
     if (process_id > 0)
     {
-	std::ofstream pid_file;
-	pid_file.open("/var/run/ps3event_clientd.pid");
-	pid_file << process_id << std::endl;
-	pid_file.close();
+	fp.open("/var/run/ps3event_clientd.pid");
+	fp << process_id << std::endl;
+	fp.close();
     	exit(0);
     }
 
@@ -59,12 +58,8 @@ int main()
 	std::this_thread::sleep_for(std::chrono::seconds(30));
     } while ( !client.hasGrabed() );
 
-    int ret = client.connectToKodi();
-    if ( ret == -1 )
-    {
-    	fp << "Error creating socket" << std::endl;
-    	exit(1);
-    }
+    std::string msg = "PS3EventClient use " + client.keymap();
+    client.SendLOG( LOGINFO, msg.c_str());
 
     while (1)
     {
