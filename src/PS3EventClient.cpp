@@ -50,6 +50,7 @@ void PS3EventClient::readEvent()
     struct input_event e;
     unsigned short flag;
     unsigned short code;
+    unsigned short amout;
     int rc = read(M_handler, &e, sizeof(e));
     if ( rc > 0 )
     {
@@ -68,6 +69,30 @@ void PS3EventClient::readEvent()
             code = e.code - 287;
             SendButton(code, M_keymap.c_str(), flag);
             break;
+        // case 3:
+        //     flag = BTN_USE_AMOUNT | BTN_AXIS;
+        //     switch ( e.code ) {
+        //     case 0:
+        //         code = 1;
+        //         amount = (e.value + 127.0)/127*65
+        //         SendButton(code, M_keymap.c_str(), flag, e.value);
+        //         break;
+        //     case 1:
+        //         code = 2;
+        //         SendButton(code, M_keymap.c_str(), flag, e.value);
+        //         break;
+        //     case 2:
+        //         code = 3;
+        //         SendButton(code, M_keymap.c_str(), flag, e.value);
+        //         break;
+        //     case 3:
+        //         code = 4;
+        //         SendButton(code, M_keymap.c_str(), flag, e.value);
+        //         break;
+        //     default:
+        //         break;
+        //     }
+        //     break;
         default:
             break;
         }
