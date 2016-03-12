@@ -77,13 +77,13 @@
 <!-- 20              [] (square)               -->
 <keymap>
   <global>
-    <joystick name="PLAYSTATION(R)3 Controller">
+    <joystick name="/Sony PLAYSTATION\(R\)3 Controller.*">
       <altname>PLAYSTATION(R)3 Controller</altname>
       <altname>PS3 Controller</altname>
       <button id="15">Select</button>
       <button id="14">Back</button>
-      <button id="16">ContextMenu</button>
-      <button id="13">FullScreen</button>
+      <button id="16">FullScreen</button>
+      <button id="13">ContextMenu</button>
       <button id="11">Queue</button>
       <button id="12">Playlist</button>
       <button id="1">PreviousMenu</button>
@@ -124,7 +124,61 @@
       <axis id="23" rest="-32768">noop</axis>
     </joystick>
   </global>
-  <!-- <Home> -->
+  <fullscreenvideo>
+    <joystick name="/Sony PLAYSTATION\(R\)3 Controller.*">
+      <altname>PLAYSTATION(R)3 Controller</altname>
+      <altname>PS3 Controller</altname>
+      <button id="1">noop</button>
+      <button id="2">noop</button>
+      <button id="3">noop</button>
+      <button id="4">OSD</button>
+      <button id="5">VolumeUp</button>
+      <button id="6">StepForward</button>
+      <button id="7">VolumeDown</button>
+      <button id="8">StepBack</button>
+      <button id="9">ChapterOrBigStepBack</button>
+      <button id="10">ChapterOrBigStepForward</button>
+      <button id="11">SkipPrevious</button>
+      <button id="12">SkipNext</button>
+      <button id="13">NextSubtitle</button>
+      <button id="14">Stop</button>
+      <button id="15">PlayPause</button>
+      <button id="16">AudioNextLanguage</button>
+      <button id="17">noop</button>
+    </joystick>    
+  </fullscreenvideo>
+  <Home>
+    <joystick name="/Sony PLAYSTATION\(R\)3 Controller.*">
+      <altname>PLAYSTATION(R)3 Controller</altname>
+      <altname>PS3 Controller</altname>
+      <button id="1">reloadkeymaps</button>
+      <button id="4">UpdateLibrary</button>
+    </joystick>
+  </Home>
+  <VideoLibrary>
+    <joystick name="/Sony PLAYSTATION\(R\)3 Controller.*">
+      <altname>PLAYSTATION(R)3 Controller</altname>
+      <altname>PS3 Controller</altname>
+      <button id="1">ToggleWatched</button>
+      <button id="2">noop</button>
+      <button id="3">noop</button>
+      <button id="4">UpdateLibrary</button>
+      <button id="5">Up</button>
+      <button id="6">Right</button>
+      <button id="7">Down</button>
+      <button id="8">Left</button>
+      <button id="9">PreviousMenu</button>
+      <button id="10">PageDown</button>
+      <button id="11">ParentDir</button>
+      <button id="12">PageUp</button>
+      <button id="13">Info</button>
+      <button id="14">Back</button>
+      <button id="15">Select</button>
+      <button id="16">ContextMenu</button>
+      <button id="17">ActivateWindow(Home)</button>
+    </joystick>
+  </VideoLibrary>
+    <!-- <Home> -->
   <!--   <joystick name="Sony PLAYSTATION\(R\)3 Controller"> -->
   <!--     <altname>PLAYSTATION(R)3 Controller</altname> -->
   <!--     <altname>PS3 Controller</altname> -->
